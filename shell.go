@@ -1,15 +1,24 @@
 package main
 
 import (
-	"strings"
+	"fmt"
+	"os"
 
+	shellwords "github.com/mattn/go-shellwords"
 	readline "gopkg.in/readline.v1"
 )
 
 func processCmd(line string) {
-	args := strings.Split(line, " ")
-	handler := lookupHandler(args[0])
-	handler(args[1:])
+	args, err := shellwords.Parse(line)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "ERROR: syntax error")
+		return
+	}
+
+	if len(args) > 0 {
+		handler := lookupHandler(args[0])
+		handler(args[1:])
+	}
 }
 
 func startShell() {
