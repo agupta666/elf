@@ -16,6 +16,8 @@ func GetAction(arg string) Action {
 		return NewShellAction(arg[1:])
 	case '@':
 		return NewFileAction(arg[1:])
+	case '#':
+		return NewMarkdownAction(arg[1:])
 	default:
 		return NewStringAction(arg)
 	}
