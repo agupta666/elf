@@ -1,8 +1,8 @@
 package main
 
 import (
-	"bytes"
-	"io/ioutil"
+	"io"
+	"net/http"
 	"os"
 	"os/exec"
 	"strings"
@@ -10,7 +10,7 @@ import (
 
 // Action represents actions to be taken when a reuest matches a given route
 type Action interface {
-	Exec() ([]byte, error)
+	Exec(w http.ResponseWriter) error
 }
 
 // StringAction action represents actions which responds with a string
@@ -24,8 +24,9 @@ func NewStringAction(s string) *StringAction {
 }
 
 // Exec executes a string action
-func (sa *StringAction) Exec() ([]byte, error) {
-	return []byte(sa.Value), nil
+func (sa *StringAction) Exec(w http.ResponseWriter) error {
+	w.Write([]byte(sa.Value))
+	return nil
 }
 
 // ShellAction action represents actions which responds with output of a shell command
@@ -39,18 +40,16 @@ func NewShellAction(s string) *ShellAction {
 }
 
 // Exec executes a string action
-func (sa *ShellAction) Exec() ([]byte, error) {
+func (sa *ShellAction) Exec(w http.ResponseWriter) error {
 	xs := strings.Split(sa.Cmd, " ")
 	cmd := exec.Command(xs[0], xs[1:]...)
-	var out bytes.Buffer
-	cmd.Stdout = &out
+	cmd.Stdout = w
 	err := cmd.Run()
 
 	if err != nil {
-		return make([]byte, 0), err
+		return err
 	}
-
-	return out.Bytes(), nil
+	return nil
 }
 
 // FileAction action represents actions which responds with the contents of a file
@@ -64,17 +63,18 @@ func NewFileAction(p string) *FileAction {
 }
 
 // Exec executes a file action
-func (fa *FileAction) Exec() ([]byte, error) {
+func (fa *FileAction) Exec(w http.ResponseWriter) error {
 	r, err := os.Open(fa.Path)
 	if err != nil {
-		return make([]byte, 0), err
+		return err
 	}
-	b, err := ioutil.ReadAll(r)
 
+	_, err = io.Copy(w, r)
 	if err != nil {
-		return make([]byte, 0), err
+		return err
 	}
-	return b, nil
+
+	return nil
 }
 
 func getAction(arg string) Action {

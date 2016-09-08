@@ -10,14 +10,12 @@ func epHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data, err := action.Exec()
+	err := action.Exec(w)
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-
-	w.Write(data)
 }
 
 func startDefaultEp(addr string) {
