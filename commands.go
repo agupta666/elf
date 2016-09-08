@@ -3,13 +3,15 @@ package main
 import (
 	"fmt"
 	"os"
+
+	"github.com/agupta666/hash/actions"
 )
 
 // CmdHandler is a type for all command handler functions
 type CmdHandler func(args []string)
 
 func routeCmd(args []string) {
-	addRoute(args[0], getAction(args[1]))
+	addRoute(args[0], actions.GetAction(args[1]))
 }
 
 func exitCmd(args []string) {

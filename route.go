@@ -1,7 +1,9 @@
 package main
 
-var routes = make(map[string]Action)
+import "github.com/agupta666/hash/actions"
 
-func addRoute(path string, action Action) {
+var routes = make(map[string]actions.Action)
+
+func addRoute(path string, action actions.Action) {
 	routes[path] = action
 }
