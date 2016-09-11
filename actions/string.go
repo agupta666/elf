@@ -13,7 +13,7 @@ func NewStringAction(s string) *StringAction {
 }
 
 // Exec executes a string action
-func (sa *StringAction) Exec(w http.ResponseWriter) error {
+func (sa *StringAction) Exec(w http.ResponseWriter, r *http.Request) error {
 	w.Write([]byte(sa.Value))
 	return nil
 }

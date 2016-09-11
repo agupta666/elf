@@ -10,7 +10,7 @@ func epHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err := action.Exec(w)
+	err := action.Exec(w, r)
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)

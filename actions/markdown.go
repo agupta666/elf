@@ -19,14 +19,14 @@ func NewMarkdownAction(s string) *MarkdownAction {
 }
 
 // Exec executes a string action
-func (ma *MarkdownAction) Exec(w http.ResponseWriter) error {
+func (ma *MarkdownAction) Exec(w http.ResponseWriter, r *http.Request) error {
 
-	r, err := os.Open(ma.Path)
+	reader, err := os.Open(ma.Path)
 	if err != nil {
 		return err
 	}
 
-	data, err := ioutil.ReadAll(r)
+	data, err := ioutil.ReadAll(reader)
 
 	if err != nil {
 		return err

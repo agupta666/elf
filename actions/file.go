@@ -4,6 +4,9 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"path"
+
+	"github.com/agupta666/hash/utils"
 )
 
 // FileAction action represents actions which responds with the contents of a file
@@ -17,16 +20,23 @@ func NewFileAction(p string) *FileAction {
 }
 
 // Exec executes a file action
-func (fa *FileAction) Exec(w http.ResponseWriter) error {
-	r, err := os.Open(fa.Path)
+func (fa *FileAction) Exec(w http.ResponseWriter, r *http.Request) error {
+	reader, err := os.Open(fa.Path)
 	if err != nil {
 		return err
 	}
 
-	_, err = io.Copy(w, r)
+	emitMimeType(fa.Path, w)
+	_, err = io.Copy(w, reader)
 	if err != nil {
 		return err
 	}
 
 	return nil
+}
+
+func emitMimeType(fname string, w http.ResponseWriter) {
+	ext := path.Ext(fname)
+	mimeType := utils.TypeByExtension(ext)
+	w.Header().Set("Content-Type", mimeType)
 }

@@ -17,7 +17,7 @@ func NewShellAction(s string) *ShellAction {
 }
 
 // Exec executes a string action
-func (sa *ShellAction) Exec(w http.ResponseWriter) error {
+func (sa *ShellAction) Exec(w http.ResponseWriter, r *http.Request) error {
 	xs := strings.Split(sa.Cmd, " ")
 	cmd := exec.Command(xs[0], xs[1:]...)
 	cmd.Stdout = w
