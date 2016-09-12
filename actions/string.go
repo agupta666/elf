@@ -8,8 +8,8 @@ type StringAction struct {
 }
 
 // NewStringAction creates a new StringAction
-func NewStringAction(s string) *StringAction {
-	return &StringAction{Value: s}
+func NewStringAction(s string) (*StringAction, error) {
+	return &StringAction{Value: s}, nil
 }
 
 // Exec executes a string action

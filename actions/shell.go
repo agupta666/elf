@@ -12,8 +12,8 @@ type ShellAction struct {
 }
 
 // NewShellAction creates a new ShellAction
-func NewShellAction(s string) *ShellAction {
-	return &ShellAction{Cmd: s}
+func NewShellAction(s string) (*ShellAction, error) {
+	return &ShellAction{Cmd: s}, nil
 }
 
 // Exec executes a string action

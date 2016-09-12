@@ -8,8 +8,8 @@ type RedirectAction struct {
 }
 
 // NewRedirectAction creates a new RedirectAction
-func NewRedirectAction(s string) *RedirectAction {
-	return &RedirectAction{URL: s}
+func NewRedirectAction(s string) (*RedirectAction, error) {
+	return &RedirectAction{URL: s}, nil
 }
 
 // Exec executes a redirect action

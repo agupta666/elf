@@ -1,6 +1,9 @@
 package actions
 
-import "net/http"
+import (
+	"net/http"
+	"strings"
+)
 
 // Action represents actions to be taken when a reuest matches a given route
 type Action interface {
@@ -8,7 +11,7 @@ type Action interface {
 }
 
 // GetAction creates an action object based on its identifier
-func GetAction(arg string) Action {
+func GetAction(arg string) (Action, error) {
 	actionIdentifier := arg[0]
 
 	switch actionIdentifier {
@@ -21,7 +24,16 @@ func GetAction(arg string) Action {
 	case '^':
 		return NewRedirectAction(arg[1:])
 	default:
-		return NewStringAction(arg)
+		return getBuiltinAction(arg)
 	}
 
+}
+
+func getBuiltinAction(arg string) (Action, error) {
+	switch {
+	case strings.HasPrefix(arg, "data["):
+		return NewDataActionFromExpr(arg)
+	default:
+		return NewStringAction(arg)
+	}
 }

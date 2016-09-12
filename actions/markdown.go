@@ -14,8 +14,8 @@ type MarkdownAction struct {
 }
 
 // NewMarkdownAction creates a new MarkdownAction
-func NewMarkdownAction(s string) *MarkdownAction {
-	return &MarkdownAction{Path: s}
+func NewMarkdownAction(s string) (*MarkdownAction, error) {
+	return &MarkdownAction{Path: s}, nil
 }
 
 // Exec executes a string action

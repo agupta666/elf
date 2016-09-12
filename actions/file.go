@@ -15,8 +15,8 @@ type FileAction struct {
 }
 
 // NewFileAction creates a new FileAction
-func NewFileAction(p string) *FileAction {
-	return &FileAction{Path: p}
+func NewFileAction(p string) (*FileAction, error) {
+	return &FileAction{Path: p}, nil
 }
 
 // Exec executes a file action

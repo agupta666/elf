@@ -11,7 +11,12 @@ import (
 type CmdHandler func(args []string)
 
 func routeCmd(args []string) {
-	addRoute(args[0], actions.GetAction(args[1]))
+	act, err := actions.GetAction(args[1])
+	if err != nil {
+		fmt.Println("ERROR:", err)
+		return
+	}
+	addRoute(args[0], act)
 }
 
 func exitCmd(args []string) {
