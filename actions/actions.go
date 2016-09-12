@@ -23,6 +23,8 @@ func GetAction(arg string) (Action, error) {
 		return NewMarkdownAction(arg[1:])
 	case '^':
 		return NewRedirectAction(arg[1:])
+	case '%':
+		return NewForwardAction(arg[1:])
 	default:
 		return getBuiltinAction(arg)
 	}

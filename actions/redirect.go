@@ -2,7 +2,7 @@ package actions
 
 import "net/http"
 
-// RedirectAction action represents actions which responds with a string
+// RedirectAction action represents actions which redirect to a given url
 type RedirectAction struct {
 	URL string
 }
