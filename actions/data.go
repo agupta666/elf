@@ -3,15 +3,12 @@ package actions
 import (
 	"crypto/rand"
 	"errors"
-	"fmt"
 	"net/http"
 	"strconv"
 	"strings"
-
-	"github.com/agupta666/hash/utils"
 )
 
-// DataAction action represents actions which responds with the contents of a file
+// DataAction action represents actions which responds with random bytes of data of given size and format
 type DataAction struct {
 	Size int
 	Type string
@@ -75,7 +72,7 @@ func parseDataExpr(s string) (*DataAction, error) {
 	}
 }
 
-// Exec executes a file action
+// Exec executes a data action
 func (da *DataAction) Exec(w http.ResponseWriter, r *http.Request) error {
 
 	data, err := makeData(da.Size)
@@ -95,17 +92,6 @@ func (da *DataAction) Exec(w http.ResponseWriter, r *http.Request) error {
 	}
 
 	return nil
-}
-
-func writeFileName(name string, ext string, w http.ResponseWriter) {
-	fileName := fmt.Sprintf("%s%s", name, ext)
-	value := fmt.Sprintf("attachment; filename=%s", fileName)
-	w.Header().Set("Content-Disposition", value)
-}
-
-func writeMimeType(ext string, w http.ResponseWriter) {
-	mimeType := utils.TypeByExtension(ext)
-	w.Header().Set("Content-Type", mimeType)
 }
 
 func makeData(sz int) ([]byte, error) {

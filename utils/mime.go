@@ -47,6 +47,7 @@ var typeMap = map[string]string{
 	".ogv":   "video/ogg",
 	".ogx":   "application/ogg",
 	".pdf":   "application/pdf",
+	".png":   "image/png",
 	".ppt":   "application/vnd.ms-powerpoint",
 	".rar":   "application/x-rar-compressed",
 	".rtf":   "application/rtf",

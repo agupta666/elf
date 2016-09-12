@@ -33,6 +33,8 @@ func getBuiltinAction(arg string) (Action, error) {
 	switch {
 	case strings.HasPrefix(arg, "data["):
 		return NewDataActionFromExpr(arg)
+	case strings.HasPrefix(arg, "image["):
+		return NewImageActionFromExpr(arg)
 	default:
 		return NewStringAction(arg)
 	}
