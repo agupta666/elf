@@ -20,7 +20,7 @@ func (da *DataAction) HasName() bool {
 	return len(da.Name) != 0
 }
 
-// NewDataActionFromExpr creates a new DataAction drom an expression
+// NewDataActionFromExpr creates a new DataAction from an expression
 func NewDataActionFromExpr(p string) (*DataAction, error) {
 	return parseDataExpr(p)
 }

@@ -39,6 +39,8 @@ func getBuiltinAction(arg string) (Action, error) {
 		return NewImageActionFromExpr(arg)
 	case strings.HasPrefix(arg, "json["):
 		return NewJSONActionFromExpr(arg)
+	case strings.HasPrefix(arg, "upload["):
+		return NewUploadActionFromExpr(arg)
 	default:
 		return NewStringAction(arg)
 	}
