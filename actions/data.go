@@ -7,6 +7,8 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
+
+	"github.com/agupta666/hash/utils"
 )
 
 // DataAction action represents actions which responds with random bytes of data of given size and format
@@ -38,13 +40,11 @@ func NewDataAction(size string, ext string) (*DataAction, error) {
 		return nil, errors.New("size must be integer")
 	}
 
-	extn := strings.TrimSpace(ext)
-
 	if !strings.HasPrefix(ext, ".") {
-		extn = "." + ext
+		ext = "." + ext
 	}
 
-	return &DataAction{Size: sz, Type: extn}, nil
+	return &DataAction{Size: sz, Type: ext}, nil
 }
 
 // NewDataActionWithName adds a file name to the data action
@@ -55,14 +55,14 @@ func NewDataActionWithName(size string, ext string, name string) (*DataAction, e
 		return nil, err
 	}
 
-	dAction.Name = strings.TrimSpace(name)
+	dAction.Name = name
 	return dAction, nil
 }
 
 func parseDataExpr(s string) (*DataAction, error) {
 	s = strings.TrimPrefix(s, "data[")
 	s = strings.TrimSuffix(s, "]")
-	args := strings.Split(s, ",")
+	args := utils.SplitAndTrim(s, ",")
 
 	switch len(args) {
 	case 0, 1:
