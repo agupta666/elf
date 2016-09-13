@@ -1,6 +1,7 @@
 package actions
 
 import (
+	"fmt"
 	"net/http"
 	"os/exec"
 	"strings"
@@ -9,6 +10,10 @@ import (
 // ShellAction action represents actions which responds with output of a shell command
 type ShellAction struct {
 	Cmd string
+}
+
+func (sa *ShellAction) String() string {
+	return fmt.Sprintf("![Command=%s]", sa.Cmd)
 }
 
 // NewShellAction creates a new ShellAction

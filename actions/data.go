@@ -3,6 +3,7 @@ package actions
 import (
 	"crypto/rand"
 	"errors"
+	"fmt"
 	"net/http"
 	"strconv"
 	"strings"
@@ -13,6 +14,10 @@ type DataAction struct {
 	Size int
 	Type string
 	Name string
+}
+
+func (da *DataAction) String() string {
+	return fmt.Sprintf("data[Size=%d, Type=%s, Name=%s]", da.Size, da.Type, da.Name)
 }
 
 // HasName returns true if the data action has a name

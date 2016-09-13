@@ -1,6 +1,7 @@
 package actions
 
 import (
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -11,6 +12,10 @@ import (
 // MarkdownAction action represents actions which responds with html output of markdown files
 type MarkdownAction struct {
 	Path string
+}
+
+func (ma *MarkdownAction) String() string {
+	return fmt.Sprintf("#[Path=%s]", ma.Path)
 }
 
 // NewMarkdownAction creates a new MarkdownAction

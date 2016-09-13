@@ -52,10 +52,10 @@ func notFoundHandler(args []string) {
 }
 
 var commandsMap = map[string]CmdHandler{
-	"route":    routeCmd,
-	"lsroutes": lsroutesCmd,
-	"kvset":    kvsetCmd,
-	"exit":     exitCmd,
+	"route": routeCmd,
+	"lsrt":  lsroutesCmd,
+	"kvset": kvsetCmd,
+	"exit":  exitCmd,
 }
 
 func lookupHandler(cmd string) CmdHandler {

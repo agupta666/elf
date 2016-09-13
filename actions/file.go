@@ -1,6 +1,7 @@
 package actions
 
 import (
+	"fmt"
 	"io"
 	"net/http"
 	"os"
@@ -12,6 +13,10 @@ import (
 // FileAction action represents actions which responds with the contents of a file
 type FileAction struct {
 	Path string
+}
+
+func (fa *FileAction) String() string {
+	return fmt.Sprintf("@[Path=%s]", fa.Path)
 }
 
 // NewFileAction creates a new FileAction

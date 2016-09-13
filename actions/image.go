@@ -2,6 +2,7 @@ package actions
 
 import (
 	"errors"
+	"fmt"
 	"image"
 	"image/color"
 	"image/draw"
@@ -22,6 +23,12 @@ type ImageAction struct {
 	Color  color.Color
 	Type   string
 	Name   string
+}
+
+func (ia *ImageAction) String() string {
+	r, g, b, _ := ia.Color.RGBA()
+	c := colorful.Color{R: float64(r), G: float64(g), B: float64(b)}
+	return fmt.Sprintf("image[Width=%d, Height=%d, Color=%s, Type=%s, Name=%s]", ia.Width, ia.Height, c.Hex(), ia.Type, ia.Name)
 }
 
 // HasName returns true if the image action has a name

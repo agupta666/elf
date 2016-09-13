@@ -1,6 +1,7 @@
 package actions
 
 import (
+	"fmt"
 	"io"
 	"net/http"
 )
@@ -8,6 +9,10 @@ import (
 // ForwardAction action represents actions which forwards the request to a given url
 type ForwardAction struct {
 	URL string
+}
+
+func (fa *ForwardAction) String() string {
+	return fmt.Sprintf("%[URL=%s]", fa.URL)
 }
 
 // NewForwardAction creates a new ForwardAction

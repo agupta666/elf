@@ -1,10 +1,17 @@
 package actions
 
-import "net/http"
+import (
+	"fmt"
+	"net/http"
+)
 
 // StringAction action represents actions which responds with a string
 type StringAction struct {
 	Value string
+}
+
+func (sa *StringAction) String() string {
+	return fmt.Sprintf("[Value=%s]", sa.Value)
 }
 
 // NewStringAction creates a new StringAction

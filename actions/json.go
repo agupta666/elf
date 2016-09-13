@@ -3,6 +3,7 @@ package actions
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"net/http"
 	"strings"
 
@@ -12,6 +13,10 @@ import (
 // JSONAction action represents actions which responds with JSON
 type JSONAction struct {
 	Name string
+}
+
+func (ja *JSONAction) String() string {
+	return fmt.Sprintf("json[Name=%s]", ja.Name)
 }
 
 // NewJSONActionFromExpr creates a new json action from an expression

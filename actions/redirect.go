@@ -1,10 +1,17 @@
 package actions
 
-import "net/http"
+import (
+	"fmt"
+	"net/http"
+)
 
 // RedirectAction action represents actions which redirect to a given url
 type RedirectAction struct {
 	URL string
+}
+
+func (ra *RedirectAction) String() string {
+	return fmt.Sprintf("^[URL=%s]", ra.URL)
 }
 
 // NewRedirectAction creates a new RedirectAction

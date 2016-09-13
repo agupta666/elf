@@ -18,6 +18,10 @@ type UploadAction struct {
 	Path string
 }
 
+func (ua *UploadAction) String() string {
+	return fmt.Sprintf("upload[Path=%s, Key=%s]", ua.Path, ua.Key)
+}
+
 // NewUploadActionFromExpr creates a new Upload action from an expression
 func NewUploadActionFromExpr(p string) (*UploadAction, error) {
 	return parseUploadExpr(p)
