@@ -1,12 +1,15 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/agupta666/hash/actions"
 )
 
+// Router is a basic http router for routes added from console
 type Router struct {
 }
 
@@ -40,5 +43,10 @@ func (rt *Router) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 func startDefaultEp(addr string) {
 	http.Handle("/", new(Router))
-	http.ListenAndServe(addr, nil)
+	err := http.ListenAndServe(addr, nil)
+
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "ERROR:", "failed to start default http endpoint", err)
+		os.Exit(1)
+	}
 }
