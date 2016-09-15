@@ -57,6 +57,7 @@ var completer = readline.NewPrefixCompleter(
 		),
 	),
 	readline.PcItem("lsrt"),
+	readline.PcItem("delrt"),
 	readline.PcItem("kvset"),
 	readline.PcItem("exit"),
 )

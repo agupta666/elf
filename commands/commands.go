@@ -15,6 +15,7 @@ func notFoundHandler(args []string) {
 var commandsMap = map[string]CmdHandler{
 	"route": routeCmd,
 	"lsrt":  lsroutesCmd,
+	"delrt": deleteRouteCmd,
 	"kvset": kvsetCmd,
 	"exit":  exitCmd,
 }

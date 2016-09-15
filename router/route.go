@@ -13,3 +13,8 @@ func AddRoute(path string, action actions.Action) {
 func Routes() map[string]actions.Action {
 	return routes
 }
+
+// DeleteRoute deletes a route from the routing table
+func DeleteRoute(path string) {
+	delete(routes, path)
+}
