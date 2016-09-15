@@ -5,8 +5,14 @@ import (
 	"strings"
 )
 
+// PatternHolder holds the matched pattern for later use
+type PatternHolder interface {
+	SetPattern(p string)
+}
+
 // Action represents actions to be taken when a reuest matches a given route
 type Action interface {
+	PatternHolder
 	Exec(w http.ResponseWriter, r *http.Request) error
 }
 
@@ -41,6 +47,8 @@ func getBuiltinAction(arg string) (Action, error) {
 		return NewJSONActionFromExpr(arg)
 	case strings.HasPrefix(arg, "upload["):
 		return NewUploadActionFromExpr(arg)
+	case strings.HasPrefix(arg, "dir["):
+		return NewDirActionFromExpr(arg)
 	default:
 		return NewStringAction(arg)
 	}

@@ -18,6 +18,7 @@ import (
 
 // ImageAction action represents actions which responds with an image
 type ImageAction struct {
+	PatternHolder
 	Width  int
 	Height int
 	Color  color.Color
@@ -170,3 +171,6 @@ func (ia *ImageAction) Exec(w http.ResponseWriter, r *http.Request) error {
 
 	return nil
 }
+
+// SetPattern sets the matched pattern in the action
+func (ia *ImageAction) SetPattern(p string) {}

@@ -7,6 +7,7 @@ import (
 
 // StringAction action represents actions which responds with a string
 type StringAction struct {
+	PatternHolder
 	Value string
 }
 
@@ -24,3 +25,6 @@ func (sa *StringAction) Exec(w http.ResponseWriter, r *http.Request) error {
 	w.Write([]byte(sa.Value))
 	return nil
 }
+
+// SetPattern sets the matched pattern in the action
+func (sa *StringAction) SetPattern(p string) {}

@@ -11,6 +11,7 @@ import (
 
 // MarkdownAction action represents actions which responds with html output of markdown files
 type MarkdownAction struct {
+	PatternHolder
 	Path string
 }
 
@@ -41,3 +42,6 @@ func (ma *MarkdownAction) Exec(w http.ResponseWriter, r *http.Request) error {
 
 	return nil
 }
+
+// SetPattern sets the matched pattern in the action
+func (ma *MarkdownAction) SetPattern(p string) {}

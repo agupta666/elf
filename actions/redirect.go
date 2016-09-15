@@ -7,6 +7,7 @@ import (
 
 // RedirectAction action represents actions which redirect to a given url
 type RedirectAction struct {
+	PatternHolder
 	URL string
 }
 
@@ -25,3 +26,6 @@ func (ra *RedirectAction) Exec(w http.ResponseWriter, r *http.Request) error {
 	http.Redirect(w, r, ra.URL, http.StatusTemporaryRedirect)
 	return nil
 }
+
+// SetPattern sets the matched pattern in the action
+func (ra *RedirectAction) SetPattern(p string) {}

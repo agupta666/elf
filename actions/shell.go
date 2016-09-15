@@ -9,6 +9,7 @@ import (
 
 // ShellAction action represents actions which responds with output of a shell command
 type ShellAction struct {
+	PatternHolder
 	Cmd string
 }
 
@@ -33,3 +34,6 @@ func (sa *ShellAction) Exec(w http.ResponseWriter, r *http.Request) error {
 	}
 	return nil
 }
+
+// SetPattern sets the matched pattern in the action
+func (sa *ShellAction) SetPattern(p string) {}

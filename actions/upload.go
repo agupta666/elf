@@ -14,6 +14,7 @@ import (
 
 // UploadAction represents actions which uploads files to a given folder
 type UploadAction struct {
+	PatternHolder
 	Key  string
 	Path string
 }
@@ -101,3 +102,6 @@ func parseUploadExpr(s string) (*UploadAction, error) {
 
 	}
 }
+
+// SetPattern sets the matched pattern in the action
+func (ua *UploadAction) SetPattern(p string) {}

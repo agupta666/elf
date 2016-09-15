@@ -13,6 +13,7 @@ import (
 
 // DataAction action represents actions which responds with random bytes of data of given size and format
 type DataAction struct {
+	PatternHolder
 	Size int
 	Type string
 	Name string
@@ -109,3 +110,6 @@ func makeData(sz int) ([]byte, error) {
 
 	return data, nil
 }
+
+// SetPattern sets the matched pattern in the action
+func (da *DataAction) SetPattern(p string) {}

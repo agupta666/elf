@@ -12,6 +12,7 @@ import (
 
 // JSONAction action represents actions which responds with JSON
 type JSONAction struct {
+	PatternHolder
 	Name string
 }
 
@@ -55,3 +56,6 @@ func (ja *JSONAction) Exec(w http.ResponseWriter, r *http.Request) error {
 	w.Write(b)
 	return nil
 }
+
+// SetPattern sets the matched pattern in the action
+func (ja *JSONAction) SetPattern(p string) {}

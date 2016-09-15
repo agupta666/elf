@@ -8,11 +8,12 @@ import (
 
 // ForwardAction action represents actions which forwards the request to a given url
 type ForwardAction struct {
+	PatternHolder
 	URL string
 }
 
 func (fa *ForwardAction) String() string {
-	return fmt.Sprintf("%[URL=%s]", fa.URL)
+	return fmt.Sprintf("%%[URL=%s]", fa.URL)
 }
 
 // NewForwardAction creates a new ForwardAction
@@ -49,6 +50,9 @@ func (fa *ForwardAction) Exec(w http.ResponseWriter, r *http.Request) error {
 	}
 	return nil
 }
+
+// SetPattern sets the matched pattern in the action
+func (fa *ForwardAction) SetPattern(p string) {}
 
 func copyHeader(h http.Header) http.Header {
 	nh := make(http.Header)

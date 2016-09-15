@@ -12,12 +12,16 @@ import (
 
 // FileAction action represents actions which responds with the contents of a file
 type FileAction struct {
+	PatternHolder
 	Path string
 }
 
 func (fa *FileAction) String() string {
 	return fmt.Sprintf("@[Path=%s]", fa.Path)
 }
+
+// SetPattern sets the matched pattern in the action
+func (fa *FileAction) SetPattern(p string) {}
 
 // NewFileAction creates a new FileAction
 func NewFileAction(p string) (*FileAction, error) {
