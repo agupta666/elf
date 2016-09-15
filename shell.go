@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/agupta666/hash/commands"
 	shellwords "github.com/mattn/go-shellwords"
 	readline "gopkg.in/readline.v1"
 )
@@ -16,7 +17,7 @@ func processCmd(line string) {
 	}
 
 	if len(args) > 0 {
-		handler := lookupHandler(args[0])
+		handler := commands.LookupHandler(args[0])
 		handler(args[1:])
 	}
 }
