@@ -51,6 +51,8 @@ func getBuiltinAction(arg string) (Action, error) {
 		return NewDirActionFromExpr(arg)
 	case strings.HasPrefix(arg, "dump["):
 		return NewDumpActionFromExpr(arg)
+	case strings.HasPrefix(arg, "echo["):
+		return NewEchoActionFromExpr(arg)
 	default:
 		return NewStringAction(arg)
 	}

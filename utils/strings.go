@@ -9,7 +9,11 @@ func SplitAndTrim(s, sep string) []string {
 	var result []string
 
 	for _, x := range xs {
-		result = append(result, strings.TrimSpace(x))
+		e := strings.TrimSpace(x)
+		if len(e) > 0 {
+			result = append(result, e)
+		}
+
 	}
 
 	return result

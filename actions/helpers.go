@@ -2,7 +2,9 @@ package actions
 
 import (
 	"fmt"
+	"io"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/agupta666/hash/utils"
@@ -28,4 +30,19 @@ func parseExpr(expr, name string, handler ParseComplete) (Action, error) {
 	args := utils.SplitAndTrim(expr, ",")
 
 	return handler(args)
+}
+
+func writeFile(filePath string, w http.ResponseWriter) error {
+	reader, err := os.Open(filePath)
+
+	if err != nil {
+		return err
+	}
+
+	_, err = io.Copy(w, reader)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
