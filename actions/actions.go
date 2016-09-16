@@ -49,6 +49,8 @@ func getBuiltinAction(arg string) (Action, error) {
 		return NewUploadActionFromExpr(arg)
 	case strings.HasPrefix(arg, "dir["):
 		return NewDirActionFromExpr(arg)
+	case strings.HasPrefix(arg, "dump["):
+		return NewDumpActionFromExpr(arg)
 	default:
 		return NewStringAction(arg)
 	}
