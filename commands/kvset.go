@@ -16,7 +16,7 @@ func kvsetCmd(args []string) {
 	kvs := make(store.KVSet)
 
 	for _, arg := range args[1:] {
-		xs := strings.Split(arg, "=")
+		xs := strings.Split(arg, ":")
 		k := strings.TrimSpace(xs[0])
 		v := strings.TrimSpace(xs[1])
 		kvs[k] = v

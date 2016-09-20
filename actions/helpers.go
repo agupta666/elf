@@ -1,6 +1,7 @@
 package actions
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -45,4 +46,27 @@ func writeFile(filePath string, w http.ResponseWriter) error {
 	}
 
 	return nil
+}
+
+// [auth scheme] [access_id]:[base64 encoded signature]
+func parseAuthHeader(r *http.Request) (string, string, error) {
+	authHeader := r.Header.Get("Authorization")
+
+	if len(authHeader) == 0 {
+		return "", "", errors.New("auth header not provided")
+	}
+
+	sections := strings.Split(authHeader, " ")
+
+	if len(sections) != 2 {
+		return "", "", errors.New("invalid auth header")
+	}
+
+	creds := strings.Split(sections[1], ":")
+
+	if len(creds) != 2 {
+		return "", "", errors.New("invalid auth header")
+	}
+
+	return creds[0], creds[1], nil
 }

@@ -39,12 +39,49 @@ func parseHMACExpr(exp string) (*HMACAction, error) {
 	return ac.(*HMACAction), err
 }
 
+func getSecretKey(kvs store.KVSet, clientID string) (string, error) {
+	secret, ok := kvs[clientID]
+
+	if !ok {
+		return "", errors.New("secret not found")
+	}
+
+	return secret, nil
+}
+
+func computeSignature(r *http.Request, secret string) (string, error) {
+	fmt.Println(r)
+	return "", nil
+}
+
 // Exec executes a HMAC action
 func (ha *HMACAction) Exec(w http.ResponseWriter, r *http.Request) error {
 
-	_ = store.GetKVSet(ha.Name)
+	kvs := store.GetKVSet(ha.Name)
+	clientID, signature, err := parseAuthHeader(r)
 
-	w.Write([]byte("HMAC action"))
+	if err != nil {
+		return err
+	}
+
+	clientSecret, err := getSecretKey(kvs, clientID)
+
+	if err != nil {
+		return err
+	}
+
+	computedSignature, err := computeSignature(r, clientSecret)
+
+	if err != nil {
+		return err
+	}
+
+	if signature != computedSignature {
+		http.Error(w, "unauthorized", http.StatusUnauthorized)
+		return nil
+	}
+
+	w.Write([]byte("authorized"))
 	return nil
 }
 
