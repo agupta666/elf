@@ -8,8 +8,12 @@ import (
 	"github.com/agupta666/hash/router"
 )
 
-func startDefaultEp(addr string) {
+func startDefaultEp(host string, port int) {
+	addr := fmt.Sprintf("%s:%d", host, port)
 	http.Handle("/", new(router.Router))
+
+	fmt.Fprintln(os.Stdout, "starting default http endpoint", addr)
+
 	err := http.ListenAndServe(addr, nil)
 
 	if err != nil {
