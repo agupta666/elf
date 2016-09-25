@@ -1,9 +1,13 @@
 package actions
 
 import (
+	"encoding/base64"
 	"errors"
 	"fmt"
 	"net/http"
+
+	"crypto/hmac"
+	"crypto/sha1"
 
 	"github.com/agupta666/hash/store"
 )
@@ -49,9 +53,24 @@ func getSecretKey(kvs store.KVSet, clientID string) (string, error) {
 	return secret, nil
 }
 
+func getCanonicalString(r *http.Request) string {
+	httpMethod := r.Method
+	contentType := r.Header.Get("")
+	contentMD5 := r.Header.Get("")
+	requestURI := r.URL
+	timestamp := r.Header.Get("Date")
+
+	return fmt.Sprintf("%s,%s,%s,%s,%s", httpMethod, contentType, contentMD5, requestURI, timestamp)
+}
+
 func computeSignature(r *http.Request, secret string) (string, error) {
-	fmt.Println(r)
-	return "", nil
+
+	canStr := getCanonicalString(r)
+	mac := hmac.New(sha1.New, []byte(secret))
+	mac.Write([]byte(canStr))
+
+	signature := mac.Sum(nil)
+	return base64.StdEncoding.EncodeToString(signature), nil
 }
 
 // Exec executes a HMAC action
