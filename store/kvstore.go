@@ -14,3 +14,8 @@ func SaveKVSet(key string, kvs KVSet) {
 func GetKVSet(key string) KVSet {
 	return store[key]
 }
+
+// All returns all key value sets
+func All() map[string]KVSet {
+	return store
+}

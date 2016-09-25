@@ -17,6 +17,7 @@ var commandsMap = map[string]CmdHandler{
 	"lsrt":  lsroutesCmd,
 	"delrt": deleteRouteCmd,
 	"kvset": kvsetCmd,
+	"lskv":  lskvCmd,
 	"exit":  exitCmd,
 }
 
