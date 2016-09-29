@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/agupta666/wish/store"
+	"github.com/agupta666/elf/store"
 )
 
 func kvsetCmd(args []string) {

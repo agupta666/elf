@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/agupta666/wish/utils"
+	"github.com/agupta666/elf/utils"
 )
 
 // DataAction action represents actions which responds with random bytes of data of given size and format

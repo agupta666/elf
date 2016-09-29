@@ -7,7 +7,7 @@ import (
 	"os"
 	"path"
 
-	"github.com/agupta666/wish/utils"
+	"github.com/agupta666/elf/utils"
 )
 
 // FileAction action represents actions which responds with the contents of a file

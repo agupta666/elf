@@ -1,11 +1,11 @@
-# wish
+# elf
 
 handy tool for testing http clients. Add routes and attach builtin actions to them and start testing your clients.
 
 ## Install
 
 ```
-$ go get github.com/agupta666/wish
+$ go get github.com/agupta666/elf
 ```
 
 ## Usage
@@ -13,14 +13,14 @@ $ go get github.com/agupta666/wish
 ### Shell action usage
 
 ```
-wish> route /clip !pbpaste
-wish> route /go !"w3m -dump https://golang.org/doc/effective_go.html"
+elf> route /clip !pbpaste
+elf> route /go !"w3m -dump https://golang.org/doc/effective_go.html"
 ```
 
 ### Data action usage
 ```
-wish> route /download "data[9024,.bin]"
-wish> route /download "data[9024,.bin,trivia]"
+elf> route /download "data[9024,.bin]"
+elf> route /download "data[9024,.bin,trivia]"
 ```
 
 ### Image action usage
@@ -28,23 +28,23 @@ wish> route /download "data[9024,.bin,trivia]"
 `route /some/route "image[width, height, color, format, name]"`
 
 ```
-wish> route /download "image[400,400]"
-wish> route /download "image[400,400, #E32171]"
-wish> route /download "image[400,400, #E32171, .png]"
-wish> route /download "image[400,400, #E32171, .png, gopher]"
+elf> route /download "image[400,400]"
+elf> route /download "image[400,400, #E32171]"
+elf> route /download "image[400,400, #E32171, .png]"
+elf> route /download "image[400,400, #E32171, .png, gopher]"
 ```
 
 ### JSON action usage
 create a new kv set
 
 ```
-wish> kvset dset a=1 b=2 c=3
+elf> kvset dset a=1 b=2 c=3
 ```
 
 now add a route with a JSON action
 
 ```
-wish> route /api json[dset]
+elf> route /api json[dset]
 ```
 
 
@@ -52,7 +52,7 @@ wish> route /api json[dset]
 add a route with upload action
 
 ```
-wish> route /save "upload[/path/to/some/folder, picture]"
+elf> route /save "upload[/path/to/some/folder, picture]"
 ```
 
 upload file with curl

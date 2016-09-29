@@ -1,6 +1,6 @@
 package router
 
-import "github.com/agupta666/wish/actions"
+import "github.com/agupta666/elf/actions"
 
 var routes = make(map[string]actions.Action)
 

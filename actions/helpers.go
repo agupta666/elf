@@ -8,7 +8,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/agupta666/wish/utils"
+	"github.com/agupta666/elf/utils"
 )
 
 func writeFileName(name string, ext string, w http.ResponseWriter) {

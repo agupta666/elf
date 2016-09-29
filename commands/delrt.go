@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/agupta666/wish/router"
+	"github.com/agupta666/elf/router"
 )
 
 func deleteRouteCmd(args []string) {
