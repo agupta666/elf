@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/agupta666/hash/actions"
+	"github.com/agupta666/wish/actions"
 )
 
 // Router is a basic http router for routes added from console

@@ -9,7 +9,7 @@ import (
 	"crypto/hmac"
 	"crypto/sha1"
 
-	"github.com/agupta666/hash/store"
+	"github.com/agupta666/wish/store"
 )
 
 // HMACAction action represents actions which does HMAC authentication on the attached route

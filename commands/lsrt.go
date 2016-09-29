@@ -3,7 +3,7 @@ package commands
 import (
 	"fmt"
 
-	"github.com/agupta666/hash/router"
+	"github.com/agupta666/wish/router"
 )
 
 func lsroutesCmd(args []string) {

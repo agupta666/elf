@@ -8,7 +8,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/agupta666/hash/utils"
+	"github.com/agupta666/wish/utils"
 )
 
 // DirAction represents actions which serve static files out of a given folder

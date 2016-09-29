@@ -9,7 +9,7 @@ import (
 	"path"
 	"strings"
 
-	"github.com/agupta666/hash/utils"
+	"github.com/agupta666/wish/utils"
 )
 
 // UploadAction represents actions which uploads files to a given folder

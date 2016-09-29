@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/agupta666/hash/commands"
+	"github.com/agupta666/wish/commands"
 	shellwords "github.com/mattn/go-shellwords"
 	readline "gopkg.in/readline.v1"
 )
@@ -24,8 +24,8 @@ func processCmd(line string) {
 
 func startShell() {
 	rl, err := readline.NewEx(&readline.Config{
-		Prompt:       "hash> ",
-		HistoryFile:  ".hash.hist",
+		Prompt:       "wish> ",
+		HistoryFile:  ".wish.hist",
 		AutoComplete: completer,
 	})
 	if err != nil {

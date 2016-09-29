@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/agupta666/hash/router"
+	"github.com/agupta666/wish/router"
 )
 
 func startDefaultEp(host string, port int) {

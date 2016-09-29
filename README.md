@@ -1,18 +1,18 @@
-# hash
+# wish
 
 handy tool for testing http clients ...
 
 # Shell action usage
 
 ```
-hash> route /clip !pbpaste
-hash> route /go !"w3m -dump https://golang.org/doc/effective_go.html"
+wish> route /clip !pbpaste
+wish> route /go !"w3m -dump https://golang.org/doc/effective_go.html"
 ```
 
 ### Data action usage
 ```
-hash> route /download "data[9024,.bin]"
-hash> route /download "data[9024,.bin,trivia]"
+wish> route /download "data[9024,.bin]"
+wish> route /download "data[9024,.bin,trivia]"
 ```
 
 ### Image action usage
@@ -20,23 +20,23 @@ hash> route /download "data[9024,.bin,trivia]"
 `route /some/route "image[width, height, color, format, name]"`
 
 ```
-hash> route /download "image[400,400]"
-hash> route /download "image[400,400, #E32171]"
-hash> route /download "image[400,400, #E32171, .png]"
-hash> route /download "image[400,400, #E32171, .png, gopher]"
+wish> route /download "image[400,400]"
+wish> route /download "image[400,400, #E32171]"
+wish> route /download "image[400,400, #E32171, .png]"
+wish> route /download "image[400,400, #E32171, .png, gopher]"
 ```
 
 ### JSON action usage
 create a new kv set
 
 ```
-hash> kvset dset a=1 b=2 c=3
+wish> kvset dset a=1 b=2 c=3
 ```
 
 now add a route with a JSON action
 
 ```
-hash> route /api json[dset]
+wish> route /api json[dset]
 ```
 
 
@@ -44,7 +44,7 @@ hash> route /api json[dset]
 add a route with upload action
 
 ```
-hash> route /save "upload[/path/to/some/folder, picture]"
+wish> route /save "upload[/path/to/some/folder, picture]"
 ```
 
 upload file with curl

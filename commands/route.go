@@ -3,8 +3,8 @@ package commands
 import (
 	"fmt"
 
-	"github.com/agupta666/hash/actions"
-	"github.com/agupta666/hash/router"
+	"github.com/agupta666/wish/actions"
+	"github.com/agupta666/wish/router"
 )
 
 func routeCmd(args []string) {

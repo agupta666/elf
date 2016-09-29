@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/agupta666/hash/store"
+	"github.com/agupta666/wish/store"
 )
 
 // JSONAction action represents actions which responds with JSON

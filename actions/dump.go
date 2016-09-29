@@ -9,7 +9,7 @@ import (
 	"os"
 	"path"
 
-	"github.com/agupta666/hash/utils"
+	"github.com/agupta666/wish/utils"
 	uuid "github.com/satori/go.uuid"
 )
 
