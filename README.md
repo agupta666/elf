@@ -1,8 +1,16 @@
 # wish
 
-handy tool for testing http clients ...
+handy tool for testing http clients. Add routes and attach builtin actions to them and start testing your clients.
 
-# Shell action usage
+## Install
+
+```
+$ go get github.com/agupta666/wish
+```
+
+## Usage
+
+### Shell action usage
 
 ```
 wish> route /clip !pbpaste
