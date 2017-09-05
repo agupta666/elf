@@ -18,7 +18,8 @@ var commandsMap = map[string]CmdHandler{
 	"delrt": deleteRouteCmd,
 	"kvset": kvsetCmd,
 	"lskv":  lskvCmd,
-	"exit":  exitCmd,
+	"help":  helpCmd,
+	"quit":  exitCmd,
 }
 
 // LookupHandler looks up a command handler by command name
@@ -29,4 +30,13 @@ func LookupHandler(cmd string) CmdHandler {
 		return handler
 	}
 	return notFoundHandler
+}
+
+// CommandList returns a list of commands
+func CommandList(arg string) []string {
+	cmds := make([]string, 0)
+	for cmd := range commandsMap {
+		cmds = append(cmds, cmd)
+	}
+	return cmds
 }

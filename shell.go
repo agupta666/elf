@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/agupta666/elf/actions"
 	"github.com/agupta666/elf/commands"
 	shellwords "github.com/mattn/go-shellwords"
 	readline "gopkg.in/readline.v1"
@@ -44,23 +45,11 @@ func startShell() {
 
 var completer = readline.NewPrefixCompleter(
 	readline.PcItem("route",
-		readline.PcItem("/some/path",
-			readline.PcItem("!\"\""),
-			readline.PcItem("@\"\""),
-			readline.PcItem("#\"\""),
-			readline.PcItem("^\"\""),
-			readline.PcItem("%\"\""),
-			readline.PcItem("\"data[]\""),
-			readline.PcItem("\"image[]\""),
-			readline.PcItem("\"json[]\""),
-			readline.PcItem("\"upload[]\""),
-			readline.PcItem("\"dir[]\""),
-			readline.PcItem("\"dump[]\""),
-			readline.PcItem("\"echo[]\""),
-		),
+		readline.PcItem("/path", readline.PcItemDynamic(actions.ActionList)),
 	),
 	readline.PcItem("lsrt"),
 	readline.PcItem("delrt"),
 	readline.PcItem("kvset"),
-	readline.PcItem("exit"),
+	readline.PcItem("help", readline.PcItemDynamic(commands.CommandList)),
+	readline.PcItem("quit"),
 )

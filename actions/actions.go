@@ -59,3 +59,10 @@ func getBuiltinAction(arg string) (Action, error) {
 		return NewStringAction(arg)
 	}
 }
+
+// ActionList returns a list of built-in actions
+func ActionList(arg string) []string {
+	return []string{
+		"!", "@", "#", "^", "%",
+	}
+}

@@ -3,7 +3,6 @@ package commands
 import (
 	"encoding/json"
 	"fmt"
-	"os"
 	"strings"
 
 	"github.com/agupta666/elf/store"
@@ -11,8 +10,7 @@ import (
 
 func kvsetCmd(args []string) {
 	if len(args) < 2 {
-		fmt.Fprintln(os.Stderr, "ERROR:", "syntax error")
-		fmt.Fprintln(os.Stderr, "USAGE:", "kvset name [key=value]...")
+		fmt.Println("ERROR:", "wrong number of arguments for 'kvset' command")
 		return
 	}
 	keyName := args[0]
