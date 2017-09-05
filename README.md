@@ -11,7 +11,7 @@ Elf is a single executable that you can download and put in your path, to get st
 ## Install
 
 ```
-$ go install github.com/agupta666/elf
+$ go get github.com/agupta666/elf
 ```
 
 ## Quickstart
