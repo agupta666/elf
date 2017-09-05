@@ -55,24 +55,41 @@ contents of data.txt ...
 ```
 
 ## Built-in actions
-| Action     | Syntax                       | Meaning                                             |
-|------------|------------------------------|-----------------------------------------------------|
-|  File      |                              |                                                     |
-|  Shell     |                              |                                                     |
-|  Markdown  |                              |                                                     |
-|  Redirect  |                              |                                                     |
-|  Forward   |                              |                                                     |
-|  Data      |                              |                                                     |
-|  Image     |                              |                                                     |
-|  JSON      |                              |                                                     |
-|  Upload    |                              |                                                     |
+| Action     | Syntax                                   | Meaning                                                               |
+|------------|------------------------------------------|-----------------------------------------------------------------------|
+|  File      |  @<file-path>                            | Responds with the contents of the given file                          |
+|  Shell     |  !<shell-command>                        | Responds with the output of the shell command                         |
+|  Markdown  |  #<path-to-markdown-file>                | Responds with HTML representation of the given markdown file          |
+|  Redirect  |  ^<some-url>                             | Redirects to the given URL                                            |
+|  Forward   |  %<some-url>                             | Forwards the request to the given URL                                 |
+|  Data      |  data[options...]                        | Responds with random data                                             |
+|  Image     |  image[options...]                       | Responds with image data                                              |
+|  JSON      |  json[data-set]                          | Responds with JSON representation of of a data set                    |
+|  Upload    |  upload[options]                         | Saves the uploaded file to a specified folder                         |
 
-## Example usage
+## Action Reference
 
-### Respond with the output of a shell command
+### File
+This is a built-in action that serves a static file. A static file can be specified with its absolute path with `@` as a prefix.
+
+E.g.:
+
+```
+route /static @/var/www/index.html
+```
+
+### Shell Commands
+This is a builtin action which executes the specified command on the local server and responds with the output. This action can
+be specified by prefixing `!` before the shell command
+
+#### Examples
+
 
 ```
 elf> route /clip !pbpaste
+```
+
+```
 elf> route /go !"w3m -dump https://golang.org/doc/effective_go.html"
 ```
 
@@ -108,7 +125,7 @@ elf> route /api json[dset]
 ```
 
 
-### Upload action
+### Upload files
 add a route with upload action
 
 ```
