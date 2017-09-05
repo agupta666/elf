@@ -6,6 +6,7 @@ import (
 
 	"github.com/agupta666/elf/actions"
 	"github.com/agupta666/elf/commands"
+	"github.com/agupta666/elf/router"
 	shellwords "github.com/mattn/go-shellwords"
 	readline "gopkg.in/readline.v1"
 )
@@ -48,8 +49,9 @@ var completer = readline.NewPrefixCompleter(
 		readline.PcItem("/path", readline.PcItemDynamic(actions.ActionList)),
 	),
 	readline.PcItem("lsrt"),
-	readline.PcItem("delrt"),
+	readline.PcItem("delrt", readline.PcItemDynamic(router.RouteNames)),
 	readline.PcItem("kvset"),
+	readline.PcItem("lskv"),
 	readline.PcItem("help", readline.PcItemDynamic(commands.CommandList)),
 	readline.PcItem("quit"),
 )

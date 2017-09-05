@@ -18,3 +18,13 @@ func Routes() map[string]actions.Action {
 func DeleteRoute(path string) {
 	delete(routes, path)
 }
+
+// RouteNames returns the names of configured routes
+func RouteNames(args string) []string {
+	names := make([]string, 0)
+	for k := range routes {
+		names = append(names, k)
+	}
+
+	return names
+}
