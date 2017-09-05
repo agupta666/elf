@@ -64,8 +64,12 @@ contents of data.txt ...
 |  Forward   |  %<some-url>                             | Forwards the request to the given URL                                 |
 |  Data      |  data[options...]                        | Responds with random data                                             |
 |  Image     |  image[options...]                       | Responds with image data                                              |
-|  JSON      |  json[data-set]                          | Responds with JSON representation of of a data set                    |
+|  JSON      |  json[data-set]                          | Responds with JSON representation of a data set                       |
 |  Upload    |  upload[options]                         | Saves the uploaded file to a specified folder                         |
+|  Directory |  dir[options]                            | Serves files from the specified folder                                |
+|  Dump      |  dump[options]                           | Dumps the incoming HTTP request to a specified folder                 |
+|  Echo      |  echo[options]                           | Echoes back the incoming HTTP request                                 |
+
 
 ## Action Reference
 

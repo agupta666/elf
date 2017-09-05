@@ -53,8 +53,6 @@ func getBuiltinAction(arg string) (Action, error) {
 		return NewDumpActionFromExpr(arg)
 	case strings.HasPrefix(arg, "echo["):
 		return NewEchoActionFromExpr(arg)
-	case strings.HasPrefix(arg, "hmac["):
-		return NewHMACActionFromExpr(arg)
 	default:
 		return NewStringAction(arg)
 	}

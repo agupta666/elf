@@ -28,7 +28,7 @@ func (ea *EchoAction) String() string {
 	return fmt.Sprintf("echo[Status=%d, Type=%s, Body=%s]", ea.Status, contentType, body)
 }
 
-// Exec executes a dir action
+// Exec executes a echo action
 func (ea *EchoAction) Exec(w http.ResponseWriter, r *http.Request) error {
 
 	if len(ea.Type) == 0 {

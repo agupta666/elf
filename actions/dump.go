@@ -28,7 +28,7 @@ func (da *DumpAction) String() string {
 	return fmt.Sprintf("dump[Path=%s]", da.Root)
 }
 
-// Exec executes a dir action
+// Exec executes a dump action
 func (da *DumpAction) Exec(w http.ResponseWriter, r *http.Request) error {
 	data, err := httputil.DumpRequest(r, true)
 
