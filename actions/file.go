@@ -1,6 +1,7 @@
 package actions
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -25,6 +26,16 @@ func (fa *FileAction) SetPattern(p string) {}
 
 // NewFileAction creates a new FileAction
 func NewFileAction(p string) (*FileAction, error) {
+	fi, err := os.Lstat(p)
+
+	if err != nil {
+		return nil, err
+	}
+
+	if !fi.Mode().IsRegular() {
+		return nil, errors.New("not a regular file")
+	}
+
 	return &FileAction{Path: p}, nil
 }
 
