@@ -26,7 +26,7 @@ func (rt *Router) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	action, pattern, ok := rt.match(r.URL.Path)
 
 	if !ok {
-		http.Error(w, "No action defined for this route", http.StatusInternalServerError)
+		http.Error(w, "No action defined for this route", http.StatusNotFound)
 		return
 	}
 
