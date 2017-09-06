@@ -18,6 +18,11 @@ func kvsetCmd(args []string) {
 
 	for _, arg := range args[1:] {
 		xs := strings.Split(arg, ":")
+		if len(xs) != 2 {
+			fmt.Println("ERROR:", "syntax error in 'kvset' command")
+			return
+		}
+
 		k := strings.TrimSpace(xs[0])
 		v := strings.TrimSpace(xs[1])
 		kvs[k] = v
