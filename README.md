@@ -119,7 +119,7 @@ elf> route /download "image[400,400, #E32171, .png, gopher]"
 Create a new Key-Value set
 
 ```
-elf> kvset dset a=1 b=2 c=3
+elf> kvset dset a:1 b:2 c:3
 ```
 
 now add a route with a JSON action
