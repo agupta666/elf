@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/agupta666/elf.svg?branch=master)](https://travis-ci.org/agupta666/elf)
+[![Go Report Card](https://goreportcard.com/badge/github.com/agupta666/elf)](https://goreportcard.com/report/github.com/agupta666/elf)
 # Elf
 
 Elf is an HTTP server which lets you interact with it through a command-line interface. It gives you a quick and easy interface to set up `routes` and attach `actions` to them.
